@@ -2,6 +2,9 @@
 {
     public static class Enums
     {
+        /// <summary>
+        /// The different types of positions a character can be in.
+        /// </summary>
         public enum PositionType
         {
             Dead = 0,
@@ -21,6 +24,10 @@
             Milling = 14,
             Carving = 15
         }
+        
+        /// <summary>
+        /// The different genders a character can be.
+        /// </summary>
         public enum SexType
         {
             None,
@@ -29,7 +36,10 @@
             Either,
             Neutral
         }
-
+        
+        /// <summary>
+        /// The damage types applicable in combat.
+        /// </summary>
         public enum DamageType
         {
             None = 0,
@@ -60,6 +70,13 @@
             Wind = 24
         }
 
+        /// <summary>
+        /// Looks up an <see cref="ItemType"/> enum based on the name of the item.
+        /// </summary>
+        /// <param name="name">The name of the item to lookup, excluding the "ITEM_" prefix.
+        /// Case-insensitive.</param>
+        /// <returns>The corresponding <see cref="ItemType"/> enum value if found. Otherwise,
+        /// returns <see cref="ItemType.ITEM_LIGHT"/> by default.</returns>
         public static ItemType ItemLookup(string name)
         {
             foreach (ItemType itemType in Enum.GetValues(typeof(ItemType)))
@@ -71,6 +88,9 @@
             }
             return ItemType.ITEM_LIGHT;
         }
+        /// <summary>
+        /// Types of items.
+        /// </summary>
         public enum ItemType
         {
             ITEM_LIGHT,
@@ -134,7 +154,11 @@
             ITEM_ROOM_TRAP,
             ITEM_RANDOM
         }
-
+        
+        /// <summary>
+        /// Flags for Character Affects. These are the affects that can be applied to a character.
+        /// Each flag is a power of 2, so they can be combined using bitwise operations.
+        /// </summary>
         [Flags]
         public enum AffectedByFlags
         {
@@ -171,6 +195,10 @@
             AFF_AQUA_BREATHE = 1 << 30   // 1073741824
         }
 
+        /// <summary>
+        /// Defines how a character will act.
+        /// These are flags that can be combined using bitwise operations.
+        /// </summary>
         [Flags]
         public enum ActFlags : long
         {
